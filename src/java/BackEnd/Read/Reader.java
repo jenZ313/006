@@ -170,5 +170,15 @@ public abstract class Reader implements Readable {
         }
 
     }
+
+    protected int[] convert(String[] string) {
+
+        int[] result = new int[string.length];
+        for (int i = 0; i < string.length; i++) {
+            result[i] = Integer.parseInt(string[i]);
+        }
+        return result;
+
+    }
 }
 

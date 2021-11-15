@@ -19,4 +19,6 @@ public abstract class TestReader extends Reader {
     protected final int DUECol = 4;
     protected final int PRICECol = 5;
     protected final int QUESTIONSCol = 6;
+
+
 }
