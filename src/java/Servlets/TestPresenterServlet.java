@@ -5,7 +5,7 @@
 package Servlets;
 
 import QuestionTypes.QuestionInterface;
-import static Servlets.testServlet.testManager;
+//import static Servlets.testServlet.testManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -35,8 +35,9 @@ public class TestPresenterServlet extends testServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //List<QuestionInterface> questions = testManager.getTestInfo(Integer.parseInt(request.getParameter("testId")));
-        String[] questions = testManager.getQuestions(Integer.parseInt(request.getParameter("testId")));
-        int[] marks = testManager.getMarks(Integer.parseInt(request.getParameter("testId")));
+        String[] questions = (String[])(new BackEnd.Read.Test.ReadAllQuestions(Integer.parseInt(request.getParameter("testId")))).read();
+        int[] marks = (int[])(new BackEnd.Read.Test.ReadAllMarks(Integer.parseInt(request.getParameter("testId")))).read();
+        //int[] marks = testManager.getMarks(Integer.parseInt(request.getParameter("testId")));
         request.setAttribute("testSize", questions.length);
         request.setAttribute("testId", Integer.parseInt(request.getParameter("testId")));
         for(int i=0; i<questions.length;i++){
@@ -56,7 +57,8 @@ public class TestPresenterServlet extends testServlet {
     for(int i=0;i<testSize;i++){
         answer[i]=request.getParameter("Q"+i+"answer");
     }
-    userGroupManager.answerTest(groupId, testId, answer, getUserId(request));
+    (new BackEnd.Command.submitAnswerCommand(getUserId(request), answer, testId, groupId)).execute();
+    //userGroupManager.answerTest(groupId, testId, answer, getUserId(request));
     response.sendRedirect("GroupPageServlet?groupId="+groupId);
     }
     

@@ -40,15 +40,22 @@ public class TestSubmitionServlet extends testServlet {
         request.setAttribute("groupId", groupId);
         int studentId = Integer.parseInt(request.getParameter("studentId"));
         request.setAttribute("studentId", studentId);;
-        if(userGroupManager.getSubmition(groupId, testId)!=null){
-        String[] answers = userGroupManager.getSubmition(groupId, testId).get(studentId);
+        //if(userGroupManager.getSubmition(groupId, testId)!=null){
+        String[] ques = (String[])(new BackEnd.Read.Test.ReadQuestionsID(testId)).read();
+        
+        String[] answers = new String[ques.length];
+           for(int i=0;i<ques.length;i++){
+               answers[i]=(String)(new BackEnd.Read.Answer.ReadAnswerByMore(studentId, Integer.parseInt(ques[i]), groupId)).read();
+           }//(String[])(new BackEnd.Read.Answer.ReadAnswerByMore(studentId, testId, groupId)).read();
+        //String[] answers = userGroupManager.getSubmition(groupId, testId).get(studentId);
         request.setAttribute("answers", answers);
-        }
-        List<QuestionInterface> questions = testManager.getTestInfo(testId);
-        String[] question = testManager.getQuestions(testId);
-        String[] answer = testManager.getAnswers(testId);
-        int[] mark = testManager.getMarks(testId);
-        request.setAttribute("questions", questions);
+        //}
+        //List<QuestionInterface> questions = testManager.getTestInfo(testId);
+        
+        String[] question = (String[])(new BackEnd.Read.Test.ReadAllQuestions(Integer.parseInt(request.getParameter("testId")))).read();
+        String[] answer = (String[])(new BackEnd.Read.Test.ReadAllAnswers(Integer.parseInt(request.getParameter("testId")))).read();
+        int[] mark = (int[])(new BackEnd.Read.Test.ReadAllMarks(Integer.parseInt(request.getParameter("testId")))).read();
+        //request.setAttribute("questions", questions);
         request.setAttribute("question", question);
         request.setAttribute("answer", answer);
         request.setAttribute("mark", mark);

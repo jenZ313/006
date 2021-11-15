@@ -28,7 +28,7 @@
                 <lable>"<%=request.getAttribute("Q"+i+"question")%>" </lable><br>
                 <label>Answer:</label><br>
                 <lable>"<%=request.getAttribute("Q"+i+"answer")%>" </lable><br>
-                <input type="submit" name="act" id="act" value="delet">
+                <-<!-- <input type="submit" name="act" id="act" value="delet"> -->
             </form>
                 <br>
         <%}%>

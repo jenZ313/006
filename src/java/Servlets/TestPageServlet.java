@@ -7,6 +7,7 @@ package Servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,13 +34,13 @@ public class TestPageServlet extends testServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int userId=getUserId(request);
-        ArrayList<Integer> ownedTest = testManager.getOwnedTest(userId);
+        List<Integer> ownedTest = (List<Integer>)(new BackEnd.Read.Teacher.ReadTests(userId)).read();
         for(Integer i:ownedTest){
-            request.setAttribute("test"+i, testManager.getTestName(i));
+            request.setAttribute("test"+i, (new BackEnd.Read.Test.ReadName(i)).read());
         }
         request.setAttribute("ownedTest",ownedTest);
         request.setAttribute("userId", userId);
-        request.setAttribute("userName", userManager.getName(userId));
+        request.setAttribute("userName", (new BackEnd.Read.Teacher.ReadName(userId)).read());
         if(request.getParameter("groupId")!=null){
             request.setAttribute("groupId", Integer.parseInt(request.getParameter("groupId")));
         }
@@ -49,7 +50,8 @@ public class TestPageServlet extends testServlet {
     
     public void add(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    testManager.creatExame(request.getParameter("testName"),Integer.parseInt(request.getParameter("timeLimit")), getUserId(request),0);
+    (new BackEnd.Command.createTestCommand(request.getParameter("testName"), getUserId(request), new java.util.Date(), 0)).execute();
+    //testManager.creatExame(request.getParameter("testName"),Integer.parseInt(request.getParameter("timeLimit")), getUserId(request),0);
     processRequest(request,response);
     }
     public void detal(HttpServletRequest request, HttpServletResponse response)

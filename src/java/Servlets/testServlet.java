@@ -18,10 +18,10 @@ import java.lang.reflect.Type;
 import java.util.Locale;
 import static java.lang.System.out;
 import static java.lang.System.err;
-import BackEnd1.UserGroupManager;
-import BackEnd1.UserManager;
-import BackEnd1.TestManager;
-import BackEnd1.WordManager;
+//import BackEnd1.UserGroupManager;
+//import BackEnd1.UserManager;
+//import BackEnd1.TestManager;
+//import BackEnd1.WordManager;
 import javax.servlet.http.Cookie;
 /**
  *
@@ -29,10 +29,10 @@ import javax.servlet.http.Cookie;
  */
 @WebServlet(urlPatterns = {"/testServlet"})
 public class testServlet extends HttpServlet {
-    protected static UserGroupManager userGroupManager=new UserGroupManager();
-    protected static UserManager userManager=new UserManager(null);
-    protected static TestManager testManager= new TestManager();
-    protected static WordManager wordManager=new WordManager(System.getProperty("user.dir") + "\\src\\java\\main\\Files\\Words");;
+  //  protected static UserGroupManager userGroupManager=new UserGroupManager();
+    //protected static UserManager userManager=new UserManager(null);
+    //protected static TestManager testManager= new TestManager();
+    //protected static WordManager wordManager=new WordManager(System.getProperty("user.dir") + "\\src\\java\\main\\Files\\Words");;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

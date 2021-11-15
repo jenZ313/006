@@ -49,14 +49,14 @@
                 <label><%=request.getAttribute("Tests"+i+"name")+" due at "+tests.get(i)%></label>
                 <input type="hidden" name="testId" id="testId" value=<%=i%>>
                 <input type="hidden" name="groupId" id="groupId" value=<%=groupId%>>
-                <%if(request.getAttribute("userType").equals("S")){%>
+                <%if((int)request.getAttribute("userType")==12){%>
                 <input type="submit" name="act" id="act" value="start">
-                <%}else if(request.getAttribute("userType").equals("T")){%>
+                <%}else if((int)request.getAttribute("userType")==11){%>
                     <input type="submit" name="act" id="act" value="grade">
                 <%}%>
             </form>
             <%}}%>
-            <%if(request.getAttribute("userType").equals("T")){%>
+            <%if((int)request.getAttribute("userType")==11){%>
                 <form action="GroupPageServlet" method="Post">
                     <input type="hidden" name="groupId" id="groupId" value=<%=groupId%>>
                 <input type="submit" name="act" id="act" value="assign">
@@ -75,7 +75,7 @@
                 <label><%= request.getAttribute("student"+students[i]+"name")%></label>
                 <input type="hidden" name="studentId" id="studentId" value=<%=students[i]%>>
                 <input type="hidden" name="groupId" id="groupId" value=<%=groupId%>>
-                <%if(request.getAttribute("userType").equals("T")){%>
+                <%if((int)request.getAttribute("userType")==11){%>
                 <input type="submit" name="act" id="act" value="deleat">
                 <%}%>
             </form>

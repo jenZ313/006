@@ -20,7 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 public class regesterServlet extends testServlet {
 
     public void teacher(HttpServletRequest request, HttpServletResponse response){
-        userManager.createTeacher(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"));
+        (new BackEnd.Command.registerTeacher(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"))).execute();
+        //userManager.createTeacher(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"));
         try{
             response.sendRedirect("LogInPage.html");
         }catch(IOException e){
@@ -28,7 +29,8 @@ public class regesterServlet extends testServlet {
         }
     }
     public void student(HttpServletRequest request, HttpServletResponse response){
-        userManager.createStudent(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"));
+        (new BackEnd.Command.registerStudent(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"))).execute();
+        //userManager.createStudent(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"));
         try{
             response.sendRedirect("LogInPage.html");
         }catch(IOException e){

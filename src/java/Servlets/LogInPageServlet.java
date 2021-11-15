@@ -5,7 +5,7 @@ package Servlets;
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-import static Servlets.testServlet.userGroupManager;
+//import static Servlets.testServlet.userGroupManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -25,7 +25,8 @@ import javax.servlet.http.Cookie;
 public class LogInPageServlet extends testServlet {
 
     public void logIn(HttpServletRequest request, HttpServletResponse response){
-        int result = userManager.loginWithUsername(request.getParameter("username"), request.getParameter("password"));
+        int result=(int)(new BackEnd.Command.loginCommand(request.getParameter("username"), request.getParameter("password"))).execute();
+        //int result = userManager.loginWithUsername(request.getParameter("username"), request.getParameter("password"));
         if(result==-1){
             try {
             PrintWriter out = response.getWriter();
@@ -40,16 +41,16 @@ public class LogInPageServlet extends testServlet {
         }
         }else{
             
-            String userType = userManager.getUserType(result);
+            int userType = (int)(new BackEnd.Command.checkIdentity(result)).execute();
             Cookie userId=new Cookie("userId",""+result);
             response.addCookie(userId);
-            if(userType.equals("T")){
+            if(userType==11){
                 try{
                 response.sendRedirect("TeacherPageServlet");
                 }catch(IOException e){
                     
                 }
-            }else if(userType.equals("S")){
+            }else if(userType==12){
                 try{
                 response.sendRedirect("StudentPageServlet");
                 }catch(IOException e){

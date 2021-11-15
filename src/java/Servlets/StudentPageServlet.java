@@ -4,8 +4,8 @@
  */
 package Servlets;
 
-import static Servlets.testServlet.userGroupManager;
-import static Servlets.testServlet.userManager;
+//import static Servlets.testServlet.userGroupManager;
+//import static Servlets.testServlet.userManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -34,7 +34,8 @@ public class StudentPageServlet extends testServlet {
                 
             }
         }
-        request.setAttribute("joinedGroup", userGroupManager.getJoinedGroup(userId));
+        
+        request.setAttribute("joinedGroup", (new BackEnd.Read.Student.ReadGroups(userId)).read());
         request.setAttribute("userId", userId);
         RequestDispatcher r = request.getRequestDispatcher("StudentPage.jsp");
         r.forward(request, response);
@@ -49,7 +50,8 @@ public class StudentPageServlet extends testServlet {
     }
     public void quit(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        userGroupManager.removeStudentFromGroup(getUserId(request), Integer.parseInt(request.getParameter("groupId")));
+        (new BackEnd.Command.quitGroupCommand(getUserId(request), Integer.parseInt(request.getParameter("groupId")))).execute();
+        //userGroupManager.removeStudentFromGroup(getUserId(request), Integer.parseInt(request.getParameter("groupId")));
         response.sendRedirect("StudentPageServlet");
     }
     public void learn(HttpServletRequest request, HttpServletResponse response)

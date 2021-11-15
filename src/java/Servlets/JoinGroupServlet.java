@@ -32,14 +32,15 @@ public class JoinGroupServlet extends testServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("allGroups", userGroupManager.getAllGroup());
+        request.setAttribute("allGroups", (new BackEnd.Read.Group.ReadAllGroups()).read());
         request.setAttribute("userId", getUserId(request));
         RequestDispatcher r = request.getRequestDispatcher("JoinGroup.jsp");
         r.forward(request, response);
     }
     public void join(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        userGroupManager.addStudentToGroup(getUserId(request), Integer.parseInt(request.getParameter("groupId")));
+        (new BackEnd.Command.joinGroupCommand(getUserId(request), Integer.parseInt(request.getParameter("groupId")))).execute();
+        //userGroupManager.addStudentToGroup(getUserId(request), Integer.parseInt(request.getParameter("groupId")));
         response.sendRedirect("JoinGroupServlet");
     }
 

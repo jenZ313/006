@@ -35,9 +35,12 @@ public class TestDetalServlet extends testServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //List<QuestionInterface> questions = testManager.getTestInfo(Integer.parseInt(request.getParameter("testId")));
-        String[] questions = testManager.getQuestions(Integer.parseInt(request.getParameter("testId")));
-        String[] answers = testManager.getAnswers(Integer.parseInt(request.getParameter("testId")));
-        int[] marks = testManager.getMarks(Integer.parseInt(request.getParameter("testId")));
+        String[] questions = (String[])(new BackEnd.Read.Test.ReadAllQuestions(Integer.parseInt(request.getParameter("testId")))).read();
+        String[] answers = (String[])(new BackEnd.Read.Test.ReadAllAnswers(Integer.parseInt(request.getParameter("testId")))).read();
+        int[] marks = (int[])(new BackEnd.Read.Test.ReadAllMarks(Integer.parseInt(request.getParameter("testId")))).read();
+        //String[] questions = testManager.getQuestions(Integer.parseInt(request.getParameter("testId")));
+        //String[] answers = testManager.getAnswers(Integer.parseInt(request.getParameter("testId")));
+        //int[] marks = testManager.getMarks(Integer.parseInt(request.getParameter("testId")));
         
         request.setAttribute("testSize", questions.length);
         request.setAttribute("testId", Integer.parseInt(request.getParameter("testId")));
@@ -58,14 +61,16 @@ public class TestDetalServlet extends testServlet {
         String question = request.getParameter("question");
         String answer = request.getParameter("answer");
         int mark = Integer.parseInt(request.getParameter("mark"));
-        testManager.addQuestion(testId, question, answer, mark);
+        (new BackEnd.Command.addQuestionToTestCommand(testId, question, answer, mark)).execute();
+        //testManager.addQuestion(testId, question, answer, mark);
         processRequest(request,response);
     }
     public void delet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     int id = Integer.parseInt(request.getParameter("testId"));
     int questionNumber = Integer.parseInt(request.getParameter("questionNumber"));
-    testManager.removeQuestion(id, questionNumber);
+    //(new BackEnd.Command.)
+    //testManager.removeQuestion(id, questionNumber);
     processRequest(request,response);
     }
     public void back(HttpServletRequest request, HttpServletResponse response)

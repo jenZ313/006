@@ -37,7 +37,7 @@
                 <label> name your test</label>
                 <input type="text" name="testName" id="testName">
                 <label> set a time limit for it</label>
-                <input type ="number" name ="timeLimit" id="timeLimit">
+                <!-- <input type ="number" name ="timeLimit" id="timeLimit"> -->
                 <input type="submit" name ="act" id="act" value="add">
             </form>
         </div>
