@@ -18,6 +18,8 @@ public class addQuestionToTestCommand extends Command {
 
     public addQuestionToTestCommand(int testID, String question, String answer, int mark) {
         this.testID = testID;
+        QuestionWriter writer = new WriteNewQuestion("question", question, answer, mark);
+        writer.set();
         this.questionID = (int) new ReadID(question, answer).read();
     }
 
