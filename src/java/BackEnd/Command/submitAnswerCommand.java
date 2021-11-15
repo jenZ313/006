@@ -44,4 +44,8 @@ public class submitAnswerCommand extends Command {
 
         return SUCCESS;
     }
+    public static void main(String[] args){
+        Command c = new registerTeacher("a","a","a");
+        c.execute();
+    }
 }

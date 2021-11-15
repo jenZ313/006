@@ -72,7 +72,7 @@ public abstract class Command {
 
         if (userType == STUDENT) {
             //get all group ids
-            StudentReader reader = new BackEnd.Read.Student.ReadGroups(userID);
+            StudentReader reader = new BackEnd.Read.Student.ReadGroupString(userID);
             String allGroups = (String) reader.read();
             if (allGroups.equals(FAILED + "")) {
                 return FAILED;
@@ -88,8 +88,8 @@ public abstract class Command {
             return (int) writer.set();
 
         } else {
-            TeacherReader reader = new BackEnd.Read.Teacher.ReadGroups(userID);
-            String allGroups = (String) reader.read();
+            TeacherReader reader = new BackEnd.Read.Teacher.ReadGroupString(userID);
+            String allGroups = reader.read().toString();
             if (allGroups.equals(FAILED + "")) {
                 return FAILED;
             }
@@ -106,7 +106,7 @@ public abstract class Command {
 
         //get all students
         GroupReader groupReader = new ReadStudents(groupID);
-        String allStudents = (String) groupReader.read();
+        String allStudents = groupReader.read().toString();
         if (allStudents.equals(FAILED + "")) {
             return FAILED;
         }
@@ -139,7 +139,7 @@ public abstract class Command {
         String result = "";
         for (String s : array) {
             if (!s.equals(id + "")) {
-                result = s + ",";
+                result += s + ",";
             }
         }
         result = result.substring(0, result.length() - 1);

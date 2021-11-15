@@ -7,6 +7,7 @@ import BackEnd.Write.Group.GroupWriter;
 import BackEnd.Write.Group.WriteStudents;
 import BackEnd.Write.Student.StudentWriter;
 import BackEnd.Write.Student.WriteGroups;
+import java.util.HashMap;
 
 //int studentID, int groupID -> SUCCESS/FAILED
 public class joinGroupCommand extends Command {
@@ -24,7 +25,10 @@ public class joinGroupCommand extends Command {
         //add group to student
         ////get all the groups joined by the student
         StudentReader studentReader = new BackEnd.Read.Student.ReadGroups(studentID);
-        String allGroups = (String) studentReader.read();
+        String allGroups ="";
+        for(int i:((HashMap<Integer,String>)studentReader.read()).keySet()){
+            allGroups+=i;
+        }
         ////add groupID to the string
         if (isInString(allGroups, groupID, ",")) {
             return GROUPALREADYJOINED;

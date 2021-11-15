@@ -53,21 +53,21 @@ public class WriteNewGroup extends GroupWriter {
 
             //get group id
             int groupID = (int) groupReader.read();
-
-            //add new group id to string
-            teacherReader = new ReadGroups(teacherID);
-            String allGroups = (String) teacherReader.read();
-            if (allGroups.length() == 0) {
-                allGroups = groupID + "";
-            } else {
-                allGroups = groupID + "," + allGroups;
-            }
-
-            //add group to teacher
-            teacherWriter = new WriteGroups(teacherID, allGroups);
-            if ((int) teacherWriter.set() == FAILED) {
-                return FAILED;
-            }
+//
+//            //add new group id to string
+//            teacherReader = new ReadGroups(teacherID);
+//            String allGroups = (String) teacherReader.read();
+//            if (allGroups.length() == 0) {
+//                allGroups = groupID + "";
+//            } else {
+//                allGroups = groupID + "," + allGroups;
+//            }
+//
+//            //add group to teacher
+//            teacherWriter = new WriteGroups(teacherID, allGroups);
+//            if ((int) teacherWriter.set() == FAILED) {
+//                return FAILED;
+//            }
 
             return groupID;
 

@@ -34,7 +34,14 @@ public class TestPageServlet extends testServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int userId=getUserId(request);
-        List<Integer> ownedTest = (List<Integer>)(new BackEnd.Read.Teacher.ReadTests(userId)).read();
+        String[] oT= (new BackEnd.Read.Teacher.ReadTests(userId)).read().toString().split(",");
+        
+        List<Integer> ownedTest = new ArrayList<Integer>();
+        for(int i=0; i<oT.length;i++){
+            if(!oT[i].equals("")){
+            ownedTest.add(Integer.parseInt(oT[i]));
+            }
+        }
         for(Integer i:ownedTest){
             request.setAttribute("test"+i, (new BackEnd.Read.Test.ReadName(i)).read());
         }

@@ -45,11 +45,14 @@ public class GroupPageServlet extends testServlet {
         request.setAttribute("groupId", request.getParameter("groupId"));
         int groupId = Integer.parseInt(request.getParameter("groupId"));
         request.setAttribute("groupName", (new BackEnd.Read.Group.ReadName(groupId)).read());
+        request.setAttribute("debug", (new BackEnd.Read.Group.ReadCreator(groupId)).read());
         request.setAttribute("teacherName",(new BackEnd.Read.Teacher.ReadName(((int)(new BackEnd.Read.Group.ReadCreator(groupId)).read()))).read());
         String[] stu = ((String)(new BackEnd.Read.Group.ReadStudents(groupId)).read()).split(",");
         int[] students = new int[stu.length];
         for(int i=0; i<stu.length;i++){
+            if(!stu[i].equals("")){
             students[i]=Integer.parseInt(stu[i]);
+            }
         }
         request.setAttribute("students", students);
         int userId = getUserId(request);
@@ -74,7 +77,7 @@ public class GroupPageServlet extends testServlet {
         int[] test = (int[])(new BackEnd.Read.Group.ReadTests(groupId)).read();
         HashMap<Integer, java.util.Date> tests=new HashMap<>();
         for(int i=0;i<test.length;i++){
-            tests.put(test[i], (Date)(new BackEnd.Read.Test.ReadDue(test[i])).read());
+            tests.put(test[i], new Date());
             
             request.setAttribute("Tests"+test[i]+"name", (new BackEnd.Read.Test.ReadName(test[i])).read());
         }

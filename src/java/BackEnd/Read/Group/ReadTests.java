@@ -10,7 +10,7 @@ public class ReadTests extends GroupReader {
     @Override
     public Object read() {
         String sql = "select * from " + TABLE + " where id='" + groupID + "'";
-        String testIDs = (String) readInfo(sql, TESTSCol, INT);
+        String testIDs =  readInfo(sql, TESTSCol, INT).toString();
         if (testIDs.equals(FAILED + "")) {
             return FAILED;
         }

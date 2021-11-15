@@ -24,7 +24,7 @@ import javax.servlet.http.Cookie;
 @WebServlet(urlPatterns = {"/LogInPageServlet"})
 public class LogInPageServlet extends testServlet {
 
-    public void logIn(HttpServletRequest request, HttpServletResponse response){
+    public void logIn(HttpServletRequest request, HttpServletResponse response) throws IOException{
         int result=(int)(new BackEnd.Command.loginCommand(request.getParameter("username"), request.getParameter("password"))).execute();
         //int result = userManager.loginWithUsername(request.getParameter("username"), request.getParameter("password"));
         if(result==-1){
@@ -40,8 +40,9 @@ public class LogInPageServlet extends testServlet {
         //ServletException, IOException 
         }
         }else{
+            PrintWriter out = response.getWriter();
+            int userType = (int)((new BackEnd.Command.checkIdentity(result)).execute());
             
-            int userType = (int)(new BackEnd.Command.checkIdentity(result)).execute();
             Cookie userId=new Cookie("userId",""+result);
             response.addCookie(userId);
             if(userType==11){

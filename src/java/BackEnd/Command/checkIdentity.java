@@ -15,7 +15,7 @@ public class checkIdentity extends Command {
     public Object execute() {
 
         TeacherReader teacherReader = new BackEnd.Read.Teacher.ReadName(id);
-        String name = (String) teacherReader.read();
+        String name = (String) teacherReader.read().toString();
         if (!name.equals(FAILED + "")) {
             return TEACHER;
         }

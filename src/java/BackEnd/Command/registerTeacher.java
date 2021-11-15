@@ -24,4 +24,9 @@ public class registerTeacher extends Command {
 
 
     }
+
+    public static void main(String[] args) {
+        Command c = new registerTeacher("a","a","a");
+        c.execute();
+    }
 }

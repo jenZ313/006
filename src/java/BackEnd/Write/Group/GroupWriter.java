@@ -39,6 +39,7 @@ public abstract class GroupWriter extends Writer {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, groupID);
             preparedStatement.executeUpdate();
+            connection.close();
             return SUCCESS;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

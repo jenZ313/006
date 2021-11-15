@@ -1,5 +1,5 @@
 package BackEnd.Read.Student;
-
+import BackEnd.Read.Group.ReadName;
 import java.util.HashMap;
 
 public class ReadGroups extends StudentReader {
@@ -10,27 +10,31 @@ public class ReadGroups extends StudentReader {
     }
 
     @Override
-    public Object read() {
-        HashMap<Integer, String> result = new HashMap<>();
-        String sql = "select * from " + TABLE + " where id='" + studentID + "'";
-        String groups = (String) readInfo(sql, GROUPSCol, STRING);
-        String IDs = (String) readInfo(sql, IDCol, STRING);
-        if (groups.equals(FAILED + "")) {
-            return FAILED;
-        }
+   public Object read() {
+       HashMap<Integer, String> result = new HashMap<>();
+       String sql = "select * from " + TABLE + " where id='" + studentID + "'";
+       String groupsID = (String) readInfo(sql, GROUPSCol, STRING);
+       if ((groupsID.equals(FAILED + ""))) {
+           return FAILED;
+       }
 
-        try {
-            String[] groupsList = groups.trim().split(",");
-            String[] IDList = IDs.trim().split(",");
-            for (int i = 0; i < groupsList.length; i++) {
-                result.put(Integer.parseInt(IDList[i]), groupsList[i]);
-            }
-            return result;
+       try {
+           if (groupsID.equals("")) {
+               result = new HashMap<>();
+           }else{
+               String[] IDList = groupsID.trim().split(",");
+               for (String s : IDList) {
+                   int id = Integer.parseInt(s.trim());
+                   String name = (String) new ReadName(id).read().toString();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return FAILED;
-        }
+                   result.put(id, name);}
+           }
+           return result;
 
-    }
+       } catch (Exception e) {
+           e.printStackTrace();
+           return FAILED;
+       }
+
+   }
 }

@@ -23,7 +23,7 @@
                 for(int i : joinedGroup.keySet()){
                 %>
            
-            <form action="StudentPageServlet" method="Post">
+                <form action="StudentPageServlet" method="Post">
                 <label><%= joinedGroup.get(i)%></label>
                 <input type="hidden" name="groupId" id="groupId" value=<%=i%>>
                 <input type="submit" name="act" id="act" value="detal">

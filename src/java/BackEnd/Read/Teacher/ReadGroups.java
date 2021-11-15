@@ -4,7 +4,7 @@ package BackEnd.Read.Teacher;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import BackEnd.Read.Group.ReadName;
 public class ReadGroups extends TeacherReader {
 
     private final int teacherID;
@@ -17,9 +17,9 @@ public class ReadGroups extends TeacherReader {
     public Object read() {
         List<Integer> result = new ArrayList<>();
         String sql = "select * from " + TABLE + " where id='" + teacherID + "'";
-        String IDs = (String) readInfo(sql, GROUPSCol, STRING);
+        String IDs =  readInfo(sql, GROUPSCol, STRING).toString();
         if (IDs.equals(FAILED + "")) {
-            return FAILED;
+            return new ArrayList<Integer>();
         }
 
         try {
@@ -31,7 +31,6 @@ public class ReadGroups extends TeacherReader {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return FAILED;
-        }
+            return new ArrayList<Integer>();        }
     }
 }

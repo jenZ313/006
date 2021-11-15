@@ -15,14 +15,16 @@ public class ReadAllMarks extends TestReader {
     public Object read() {
         String allQuestionID = (String) new ReadQuestions(testID).read();
         if (allQuestionID.equals(FAILED + "")) {
-            return FAILED;
+            return new int[0];
         }
 
         String[] questionList = allQuestionID.split(",");
         int[] marks = new int[questionList.length];
         for (int i = 0; i < questionList.length; i++) {
+            if(!questionList[i].equals("")){
             QuestionReader questionReader = new ReadMark(Integer.parseInt(questionList[i]));
             marks[i] = (int) questionReader.read();
+            }
         }
         return marks;
     }
