@@ -10,6 +10,7 @@ public abstract class Reader implements Readable {
 
     public final int INT = 100;
     public final int STRING = 101;
+    public final int DATE = 102;
 
 
     public static Connection getConnection() {
@@ -61,8 +62,12 @@ public abstract class Reader implements Readable {
                 int result = resultSet.getInt(col);
                 connection.close();
                 return result;
-            } else {
+            } else if (type == STRING) {
                 String result = resultSet.getString(col);
+                connection.close();
+                return result;
+            } else {
+                Date result = resultSet.getDate(col);
                 connection.close();
                 return result;
             }
@@ -105,6 +110,7 @@ public abstract class Reader implements Readable {
         }
 
     }
+
     protected Object readaverage(String sql, int col, int type) {
         try {
             Connection connection = getConnection();
@@ -124,7 +130,7 @@ public abstract class Reader implements Readable {
                     time += 1;
                 }
                 connection.close();
-                return sum*1.0/time;
+                return sum * 1.0 / time;
             } else {
                 connection.close();
                 return FAILED;
@@ -135,6 +141,7 @@ public abstract class Reader implements Readable {
         }
 
     }
+
     protected Object readsum(String sql, int col, int type) {
         try {
             Connection connection = getConnection();
