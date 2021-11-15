@@ -60,7 +60,7 @@ public class LogInPageServlet extends testServlet {
         }
     }
     public void register(HttpServletRequest request, HttpServletResponse response){
-        try{
+        try{ 
             response.sendRedirect("regester.jsp");
         }catch(IOException e){
             

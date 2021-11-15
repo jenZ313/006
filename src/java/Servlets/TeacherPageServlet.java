@@ -120,7 +120,7 @@ public class TeacherPageServlet extends testServlet {
         response.sendRedirect("TestPageServlet");
         }catch(IOException e){
                    
-        }
+        } 
     }
     public void Creat(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

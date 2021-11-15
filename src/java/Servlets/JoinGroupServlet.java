@@ -36,7 +36,7 @@ public class JoinGroupServlet extends testServlet {
         request.setAttribute("userId", getUserId(request));
         RequestDispatcher r = request.getRequestDispatcher("JoinGroup.jsp");
         r.forward(request, response);
-    }
+    } 
     public void join(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         (new BackEnd.Command.joinGroupCommand(getUserId(request), Integer.parseInt(request.getParameter("groupId")))).execute();

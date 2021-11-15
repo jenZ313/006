@@ -60,6 +60,6 @@ public class TestPresenterServlet extends testServlet {
     (new BackEnd.Command.submitAnswerCommand(getUserId(request), answer, testId, groupId)).execute();
     //userGroupManager.answerTest(groupId, testId, answer, getUserId(request));
     response.sendRedirect("GroupPageServlet?groupId="+groupId);
-    }
+    } 
     
 }

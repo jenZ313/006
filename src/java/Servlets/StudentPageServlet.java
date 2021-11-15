@@ -31,7 +31,7 @@ public class StudentPageServlet extends testServlet {
             response.sendRedirect("LogInPage.html");
             
             }catch(IOException e){
-                
+                 
             }
         }
         

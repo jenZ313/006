@@ -32,7 +32,7 @@ public class testServlet extends HttpServlet {
   //  protected static UserGroupManager userGroupManager=new UserGroupManager();
     //protected static UserManager userManager=new UserManager(null);
     //protected static TestManager testManager= new TestManager();
-    //protected static WordManager wordManager=new WordManager(System.getProperty("user.dir") + "\\src\\java\\main\\Files\\Words");;
+    // protected static WordManager wordManager=new WordManager(System.getProperty("user.dir") + "\\src\\java\\main\\Files\\Words");;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

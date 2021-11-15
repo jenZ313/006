@@ -203,7 +203,8 @@ public class GroupPageServlet extends testServlet {
         
     }
     public void back(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException { 
+        
         int user=getUserId(request);
         int type = (int)(new BackEnd.Command.checkIdentity(user)).execute();
         if(type==11){

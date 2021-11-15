@@ -22,6 +22,7 @@ public class regesterServlet extends testServlet {
     public void teacher(HttpServletRequest request, HttpServletResponse response){
         (new BackEnd.Command.registerTeacher(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"))).execute();
         //userManager.createTeacher(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"));
+        //(new BackEnd.Command.registerTeacher("a","a","a")).execute();
         try{
             response.sendRedirect("LogInPage.html");
         }catch(IOException e){

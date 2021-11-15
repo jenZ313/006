@@ -48,8 +48,8 @@ public class TestSubmitionServlet extends testServlet {
                answers[i]=(String)(new BackEnd.Read.Answer.ReadAnswerByMore(studentId, Integer.parseInt(ques[i]), groupId)).read();
            }//(String[])(new BackEnd.Read.Answer.ReadAnswerByMore(studentId, testId, groupId)).read();
         //String[] answers = userGroupManager.getSubmition(groupId, testId).get(studentId);
-        request.setAttribute("answers", answers);
-        //}
+        request.setAttribute("answers", answers);  
+        //} 
         //List<QuestionInterface> questions = testManager.getTestInfo(testId);
         
         String[] question = (String[])(new BackEnd.Read.Test.ReadAllQuestions(Integer.parseInt(request.getParameter("testId")))).read();

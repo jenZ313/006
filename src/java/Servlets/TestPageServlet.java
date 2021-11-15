@@ -53,7 +53,7 @@ public class TestPageServlet extends testServlet {
     (new BackEnd.Command.createTestCommand(request.getParameter("testName"), getUserId(request), new java.util.Date(), 0)).execute();
     //testManager.creatExame(request.getParameter("testName"),Integer.parseInt(request.getParameter("timeLimit")), getUserId(request),0);
     processRequest(request,response);
-    }
+    } 
     public void detal(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.sendRedirect("TestDetalServlet?testId="+request.getParameter("testId"));
