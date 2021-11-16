@@ -25,6 +25,14 @@ The website creates a webpage for each registered student. Student users can see
 The website creates a webpage for every teacher user. Teacher users can see all the groups they have and are able to delete students from groups. They can also access their tests on the page by pressing the tests button.
 
 
+## Funtionality
+For now, our program can do most parts said by our specification such as creating groups and tests. We even implemented an online database and web ui to our program. However, since this is our first time coding a web program, we have faced many difficulties along the way. Our front end and back end code can work perfectly seperateingly, but we want to challenge ourselves more by connecting them together for phase 1. This process created lots of issues and we have tried our best to overcome them. We understand that our program right now is no way close to being professional, but we will absolutely move towards that direction in the future.
+
+Our program is able to store and load state through accessing an online database. All the information is organized and stored in the remote rather than local. All states of the users will be saved, for example, if a teacher creates a question, it will be permanently stored in the database unless they decide to delete it. This is not affected by time and location since everything is stored real-time.
+
+We think we are ambitious enough for our group size. We unfortunately lost one member along the way, and everyone immediately felt the weight added to us. We are challenging ourselves by doing web developing and online databases since these two are completely new to all the group members. We are also planning to upgrade from localhost to online hosting in the future, which is another big challenge for us.
+
+
 ## Design Decision
 We designed to let our users respond in the front end, and then the data is sent to the database. After processing functions, the response data will be sent back to users. We designed to ensure that our website can hold enough users at the same time, which avoids that when several users are using at the same time, the program will be confused which to process.  
 
