@@ -45,12 +45,6 @@ Besides, every piece of our code follows the dependency rule. Throughout our pro
 
 ## SOLID
 
-Single responsibility principle(SRP) Each class relate to one functionality   
-Each page has its own corresponding servlet.  
-Open/closed principle(OCP) Available to add extensions without editing the origin  
-Liskov substitution principle(LSP) We haven’t used the principle  
-Interface segregation principle(ISP) We used two interfaces, a Readable and a Writable. The classes implementing abstract in Readable does not contain anything in Writable, while the classes implementing abstract in Writable also does not contain anything in Readable  
-Dependency inversion principle(DIP) The gateway classes and entity classes both depend on some abstract interfaces, but not depend on each other.
 Single responsibility principle(SRP):In short, each class relates to one functionality and each page has its own corresponding servlet. This principle is relatively easy for us to follow because a large portion of our code is implemented through the command design pattern. This pattern ensures that each class only does one thing. For example, we have a command named “addQuestionToTest”. As its name suggests, the one and only one thing this class does is that it locates a question, and stores this question into a test in the database. It reads, modifies necessary fields in the database, but it never touches anything that is unrelated, for instance, any student information in the database. We don’t have any classes that violate this principle mainly thanks to the command pattern.
 
 Open/closed principle(OCP): Once again, we effortlessly follow this principle because of the command pattern. If we need to use any other commands along the way, we could easily just create a new class that is a sub layer of command. This does not interact with other classes in any way, so there wouldn’t be any editing needed for the original code. For example, if we decide we need a method that counts the number of questions finished by a student, we only need to add a new class and write its inherited “execute” method. All the changes will be done within its class without affecting codes that are outside.
@@ -84,7 +78,7 @@ The other refactoring method is using design pattern. We change our order operat
 ### Open Question
 Why do we need entities?
 ### Worked Well
-Everything has been working well according to our design. Our program satisfies 4 out of 7 principles of the Universal Design. Followed by satisfaction with 4 out of 5 SOLID principles and a clean architecture. We used the Command Design Pattern to improve our program.
+Everything has been working well according to our design. Our program satisfies 4 out of 7 principles of the Universal Design. Followed by satisfaction with 3/4 out of 5 SOLID principles and a clean architecture. We used the Command Design Pattern to improve our program.
 ### Member Progress
 Darcy is responsible for the front end of the program. During the working period, Darcy actively learned knowledge related to website building. He made the most significant effort on our User Interface part and as well as the controllers.   
 Gavin is responsible for the design document of the program. Besides, he works with Zi Hua on solving warnings and completing Javadocs of the program. He’s in charge of the text work of the group. Also, he and Zi Hua worked together on drawing the class diagram of the project.  
