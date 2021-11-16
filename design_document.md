@@ -87,13 +87,18 @@ We have written Javadocs for the necessary functions in the back end. Even thoug
 
 ## Testing
 For the testing of our project, we tried our best to test the existing functions. For the front end, we built a website for user interface, so it is hard to write unit test in Java. The major part of our testing is on the back end. Based on the ideal scenario we come up with, we write unit test which could check whether account creation and login of the account worked. 
+
 For teachers, we tested the function of creating questions, creating tests, adding questions to a test, the auto grade of a test and deleting group or group members. For students, we tested the function of joining a group and quitting a group.
 Our testing is not quite perfect, but we will keep updating them as the project keeps growing. And in phase 2, we will try to cover all of our code.
 
 ## Refactoring
-Our project implements most of its functions through manipulating data in the data set, so there would be plenty of duplicated codes corresponding to the access, update, or manipulate of data base. In this case, it is a problem that modifying one portion of certain code will cause many changes in the whole project. Besides duplications, the process of communicating with the data base is kind of long. When a method is long, the chance of making mistakes significantly increases.
+Our project implements most of its functions through manipulating data in the data set, so there would be plenty of duplicated codes corresponding to the access, update, or manipulate of data base. In this case, it is a problem that modifying one portion of certain code will cause many changes in the whole project. Besides duplications, the process of communicating with the data base is kind of long. When a method is long, the chance of making mistakes significantly increases. Except what just mentioned, we think there's no other code smells.
+
 In order to handle the situation mentioned above, we use extract method to refactor our code. Specifically, we move a code that grouped with others to a new and separated function. After the implementation of this feature, we could avoid the long method problem, and we also collect some similar codes together so that minimize duplications.
+
 The other refactoring method is using design pattern. We change our order operation from different managers into Command classes. By extending from parent Command class, our use cases, which are the child classes of Command, are organized clearly. It is also easier for the front end to interact and use these command.
+
+
 
 
 ## Progress Report
