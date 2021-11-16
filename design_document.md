@@ -44,12 +44,16 @@ Besides, every piece of our code follows the dependency rule. Throughout our pro
 
 ## SOLID
 
-Single responsibility principle(SRP) Each class relate to one functionality   
-Each page has its own corresponding servlet.  
-Open/closed principle(OCP) Available to add extensions without editing the origin  
-Liskov substitution principle(LSP) We haven’t used the principle  
-Interface segregation principle(ISP) We used two interfaces, a Readable and a Writable. The classes implementing abstract in Readable does not contain anything in Writable, while the classes implementing abstract in Writable also does not contain anything in Readable  
-Dependency inversion principle(DIP) The gateway classes and entity classes both depend on some abstract interfaces, but not depend on each other.  
+Single responsibility principle(SRP):In short, each class relates to one functionality and each page has its own corresponding servlet. This principle is relatively easy for us to follow because a large portion of our code is implemented  through the command design pattern. This pattern ensures that each class only does one thing. For example, we have a command named “addQuestionToTest”. As its name suggests, the one and only one thing this class does is that it locates a question, and stores this question into a test in the database. It reads, modifies necessary fields in the database, but it never touches anything that is unrelated, for instance, any student information in the database. We don’t have any classes that violate this principle mainly thanks to the command pattern.
+
+Open/closed principle(OCP): Once again, we effortlessly follow this principle because of the command pattern. If we need to use any other commands along the way, we could easily just create a new class that is a sub layer of command. This does not interact with other classes in any way, so there wouldn’t be any editing needed for the original code. For example, if we decide we need a method that counts the number of questions finished by a student, we only need to add a new class and write its inherited “execute” method. All the changes will be done within its class without affecting codes that are outside.
+
+Liskov substitution principle(LSP): We haven’t used the principle in any obvious places mainly due to the fact that we are using a command design pattern. The structure of each subclass is mostly predefined before the inheritance. We will never use the parent command class directly, and its sub command classes all have the same method, “execute.” There wouldn’t be any exceptions for now because this principle mostly challenges the “is-a” relation, and our lack of entities prevents situations like this from happening. However, in the future, if we ever want to store anything locally, there is a greater chance that we need entities and thus need to carefully consider this principle in our design.  
+
+Interface segregation principle(ISP): We used two interfaces, a Readable and a Writable. These two interfaces are implemented in readers and writes, but they are never both implemented at the same time. This is because a reader will never be asked to write anything in the table, which makes implementing writable a waste. The write method will never be used so it is never implemented in any reader classes. This works the same way for writer classes. For example, a reader class, group reader, implements readable, but not writable.
+
+Dependency inversion principle(DIP):  Our original design did satisfy this principle as we planned to make entities and use cases depend on abstract interfaces readable and writable. However, when we were actually implementing our idea, it turned out that using entities could be redundant. Even though we don’t have actual entities in our code, the tables in the database serve in a similar way as the entities for storing information. Our reader and writer,which implement an abstract interface readable/writable, interact with the database in a way that use cases may do, so there still seems to be a bridge made by abstract interface between “entity” and “use case.” This is only our informal idea to visualize them in this way because we know that the tables are not entities, and readers/writers are not use cases.
+
 
 
 ## Packaging Strategy
@@ -67,7 +71,7 @@ We used the pull requests frequently. In the beginning, every one of us creates 
 
 ## Progress Report
 ### Open Question
-Why do we need entities?
+How do we incorporate entity and real-time data base?
 ### Worked Well
 Everything has been working well according to our design. Our program satisfies 4 out of 7 principles of the Universal Design. Followed by satisfaction with 4 out of 5 SOLID principles and a clean architecture. We used the Command Design Pattern to improve our program.
 ### Member Progress
