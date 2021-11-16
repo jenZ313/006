@@ -77,6 +77,7 @@ These packages construct the major body of our project. Since each package consi
 
 ## Design Pattern
 For design patterns, we plan to implement the Command Design Pattern. Command is a design pattern that an object is used to represent and encapsulate all the information needed, so that we can parametrize clients with different requests. In this case, the client will treat the object as black box and accomplish some goal by just invoking the method “execute”. For this design pattern, sequences of command objects can be assembled into composite commands.  
+
 In our project, we are making a website that provides for students and teachers to use together, so there will be plenty of commands or orders called by our users. In this case, a “Command” design pattern would be very useful. For phase 0, we use different kinds of managers to handle all the commands in our project, including creating an account, login to the system, joining a group and so on. After implementing the Command Design Pattern,  instead of packing all the user commands into a single class, we build a “Command” parent class and then make every action into a single class and then extend that parent class. For these Commands, we specified the receiver for each of them so that each command will work with the corresponding entities correctly. 
 
 ## The Use of Github Features
