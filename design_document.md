@@ -2,28 +2,29 @@
 ## Updated specification
 ### Introduction
 
-An educational website that provides a platform for teachers and students to collaboratively learn vocabularies in other languages. But being an unusual dictionary, this website helps to study the language by providing a word bank for the users to memorize. Teachers can form study groups and assign homework, quizzes and exams to the students within the group. Students may use the website to learn words by working on their own or join a study group and learn with other students.  
+We have jumped out the box the the directory and adopted a more general platform suitable for any kind of interactive learning! Teachers can form study groups, create questions and form tests that can be assigned to study groups. Once a question/test is completed, it becomes the property of the teacher. In the future, there will be ways for teachers to profit from these creations. In the future, there will be ways for teachers to profit from these creations. Students may use the website to join study groups and learn with other students with the benefit of having a teacher to provide personalized tests.
 
-Other than learning the language through memorizing words. The website not only provides a great opportunity for students to find a teacher to help with their language learning studies but also gives the teachers the chance to meet and connect with some new potential students online. 
 
 ### Functions
-#### Individual Study
+#### Individual Study (TBC)
 Users identified as students can choose to study individually, he/she will be provided services such as wordlists and personal tests. The website will automatically generate quizzes at the student’s level.
 #### Group Study
 Users identified as students can also choose to study in groups, he/she will be assigned to a group and a teacher at a specific level. The website will provide a platform for the necessary connections between students and teachers.
 #### Tests
 Users identified as students can access tests posted by teachers if he/she joins groups or use auto-created quizzes as progress measurement if he/she chooses to study individually.
 Users identified as teachers can upload tests and get auto-graded scores from the website after students finish the test.
-#### Give Recommendation
+#### Give Recommendation (TBC)
 The website offers groups and teachers to students, once the student users finish a diagnostics quiz to evaluate level.
 #### User Files
-The website will create a file containing users’ username, password, email and some other information once the user finishes registration.
-#### Profit
+The website will stores all he information online without using any local storage.
+#### Profit (TBC)
 Since student users need to buy a membership in order to access tests on the website. Half of the profit will be given to the teacher users so teachers can gain profit that encourages him/her to create more excellent tests for students and earn for living at the same time. (The other half will be used to run the website)
 #### Student Page
 The website creates a webpage for each registered student. Student users can see all the groups they have joined and are able to join new groups on the page.
 #### Teacher Page
 The website creates a webpage for every teacher user. Teacher users can see all the groups they have and are able to delete students from groups. They can also access their tests on the page by pressing the tests button.
+
+
 ## Design Decision
 We designed to let our users respond in the front end, and then the data is sent to the database. After processing functions, the response data will be sent back to users. We designed to ensure that our website can hold enough users at the same time, which avoids that when several users are using at the same time, the program will be confused which to process.  
 We satisfy the following principles of Universal Design  
