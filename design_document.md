@@ -27,15 +27,17 @@ The website creates a webpage for every teacher user. Teacher users can see all 
 
 ## Design Decision
 We designed to let our users respond in the front end, and then the data is sent to the database. After processing functions, the response data will be sent back to users. We designed to ensure that our website can hold enough users at the same time, which avoids that when several users are using at the same time, the program will be confused which to process.  
-We satisfy the following principles of Universal Design  
-Tolerance of error:  
-Pop up warning for important actions: To avoid some actions by mistakes, our website allows double checking for users in the important moves such as deleting students from group and quitting from group.  
-Simple and Intuitive Use:  
-Different clarified buttons control specific functionality, all buttons have distinct functionalities, all buttons are labelled with clear meaning about what the button leads to, which helps users to quickly identify where they are towarding.  
-Low Physical Effort:  
-It does not require repeatable actions to use the website. There are no functionalities that requires multiple taps to be accessed  
-Perceptible Information:  
-Clear instruction to functions with concise and precise descriptions. For example, the login page only has two buttons, the login and the register buttons.  
+
+We satisfy the following principles of Universal Design:
+
+Tolerance of error: Pop up warning for important actions: To avoid some actions by mistakes, our website allows double checking for users in the important moves such as deleting students from group and quitting from group. 
+
+Simple and Intuitive Use: Different clarified buttons control specific functionality, all buttons have distinct functionalities, all buttons are labelled with clear meaning about what the button leads to, which helps users to quickly identify where they are towarding.  
+
+Low Physical Effort: It does not require repeatable actions to use the website. There are no functionalities that requires multiple taps to be accessed  
+
+Perceptible Information: clear instruction to functions with concise and precise descriptions. For example, the login page only has two buttons, the login and the register buttons.  
+
 
 ## Clean Architecture
 Referring to Clean Architecture, I think our group did a great job. Firstly, we have divided our code into four different parts as the Clean Architecture says. For entities, we have User class, Test class, and Group class that represent the most basic variable in our project. For Use cases, we have the Command class that provide functions for those entities to work. For Controllers, we have different kinds of servlets which sends users responses to backend and sends the backend responses to users. For the outermost layer, we built a website as the User Interface that our users could use and a database to save data.
