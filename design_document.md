@@ -80,7 +80,7 @@ The other refactoring method is using design pattern. We change our order operat
 
 ## Progress Report
 ### Open Question
-Why do we need entities?
+How do we incorporate entity and real-time database?
 ### Worked Well
 Everything has been working well according to our design. Our program satisfies 4 out of 7 principles of the Universal Design. Followed by satisfaction with 3/4 out of 5 SOLID principles and a clean architecture. We used the Command Design Pattern to improve our program.
 ### Member Progress
